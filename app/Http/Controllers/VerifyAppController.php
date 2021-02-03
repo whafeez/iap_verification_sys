@@ -21,7 +21,8 @@ class VerifyAppController extends Controller
 
         	$date = new DateTime();
 			$date->add(new DateInterval('P6M'));
-
+			$date->format('Y-m-d H:i:s');
+			$date->setTimezone(new DateTimeZone("UTC"));
         	$response = ['message' => $result, 'expiry_date' => $date->format('Y-m-d H:i:s')];
         }
          else {
