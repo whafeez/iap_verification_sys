@@ -35,6 +35,31 @@ class ApiRepository extends BaseRepository {
             $result = false;
          }
          return $result;
+    } 
+
+    public function divisibleBysix($number)
+    {
+        switch ($number%6)
+         {
+         case 0:
+            $result = true;
+         break;
+         default:
+            $result = false;
+         }
+         return $result;
+    }
+
+    public static function verifyRecords($receipt_hash)
+    {
+        if ($receipt_hash != null || $receipt_hash != '') {
+            $last_digit = $this->getLastChracter($receipt_hash);
+            if($this->divisibleBysix($last_digit)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
 }

@@ -30,4 +30,24 @@ class VerifyiOSAppController extends Controller
          }
         return response($response, 200);
     }
+
+    public function verifyrecord(Request $request)
+    {
+        request()->validate([
+            'receipt_hash' => 'required',
+        ]);
+        $receipt_hash = $request->get('receipt_hash');
+        if ($receipt_hash!="") {
+             
+            $result = ApiRepository::verifyRecords($receipt_hash);
+        }
+        if ($result) {
+
+            $response = ['message' => 'rate limit has been increased please try later'];
+        }
+         else {
+            $response = ['message' => 'success'];
+         }
+        return response($response, 200);
+    }
 }
