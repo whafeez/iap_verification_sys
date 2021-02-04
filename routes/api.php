@@ -18,7 +18,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/verifyPlaySotreApp','VerifyGoogleAppController@index');
-Route::get('/verifyAppleSotreApp','VerifyiOSAppController@index');
-Route::get('/verifyAppleSotreSubscription','VerifyiOSAppController@verifyrecord');
-Route::get('/verifyPlaySotreSubscription','VerifyGoogleAppController@verifyrecord');
+Route::post('/verifyPlaySotreApp','VerifyGoogleAppController@index');
+Route::post('/verifyAppleSotreApp','VerifyiOSAppController@index');
+Route::post('/verifyAppleSotreSubscription','VerifyiOSAppController@verifyrecord');
+Route::post('/verifyPlaySotreSubscription','VerifyGoogleAppController@verifyrecord');
+Route::post('/verifyPlaySotreSubscription','VerifyGoogleAppController@verifyrecord');
+Route::post('/callback','CallBackSystemController@index');
