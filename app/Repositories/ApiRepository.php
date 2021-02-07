@@ -9,8 +9,8 @@ class ApiRepository extends BaseRepository {
     public static function verifyInAppPurchase($receipt_hash)
     {
         if ($receipt_hash != null || $receipt_hash != '') {
-            $last_digit = $this->getLastChracter($receipt_hash);
-            if($this->getEvenOdd($last_digit)) {
+            $last_digit = self::getLastChracter($receipt_hash);
+            if(self::getEvenOdd($last_digit)) {
                 return true;
             } else {
                 return false;
@@ -18,13 +18,13 @@ class ApiRepository extends BaseRepository {
         }
     }
 
-    public function getLastChracter($string_hash)
+    public static function getLastChracter($string_hash)
     {
-        $last = substr(trim($string_hash), – 1);
+        $last = substr(trim($string_hash), -1);
         return $last;
     }
 
-    public function getEvenOdd($number)
+    public static function getEvenOdd($number)
     {
         switch ($number%2)
          {
@@ -37,7 +37,7 @@ class ApiRepository extends BaseRepository {
          return $result;
     } 
 
-    public function divisibleBysix($number)
+    public static function divisibleBysix($number)
     {
         switch ($number%6)
          {
@@ -53,8 +53,8 @@ class ApiRepository extends BaseRepository {
     public static function verifyRecords($receipt_hash)
     {
         if ($receipt_hash != null || $receipt_hash != '') {
-            $last_digit = $this->getLastChracter($receipt_hash);
-            if($this->divisibleBysix($last_digit)) {
+            $last_digit = self::getLastChracter($receipt_hash);
+            if(self::divisibleBysix($last_digit)) {
                 return true;
             } else {
                 return false;
